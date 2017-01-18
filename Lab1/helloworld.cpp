@@ -1,3 +1,5 @@
+// Jonathan Gaines
+
 #include <iostream>
 
 int main() {

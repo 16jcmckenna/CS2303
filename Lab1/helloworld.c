@@ -1,3 +1,5 @@
+//Jonathan Gaines
+
 #include <stdio.h>
 
 int main() {

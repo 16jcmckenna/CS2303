@@ -1,0 +1,8 @@
+Output of 'make clean':
+	rm -f sinwave.o intarray.o sinewave
+
+Output of 'make CFLAGS=-O2':
+	gcc -O2 -Wall -c intarray.c
+	gcc -O2 -Wall -c sinewave.c
+	gcc -O2 -Wall sinewave.o intarray.o -lm -o sinewave
+
