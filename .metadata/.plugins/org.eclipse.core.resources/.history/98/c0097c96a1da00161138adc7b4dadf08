@@ -1,0 +1,127 @@
+/*
+ * PA1.c
+ *
+ *  Created on: Jan 14, 2017
+ *      Author: Mitch Gaines
+ */
+
+#include <stdio.h>
+
+int inputYear;
+
+
+int getStartingDay (d, m, y) {
+	if(m == 1){
+		m = 13;
+		y--;
+	}
+	else if(m == 2){
+		m = 14;
+		y--;
+	}
+
+	return (d + 2*m + 3*(m+1)/5 + y + y/4 - y/100 + y/400 + 2) % 7;
+}
+
+void printMonth(y, m, start_day) {
+	printMonthName();
+}
+
+void printMonthName (y, m) {
+	printf("\n\n");
+	switch(m) {
+	case 1:
+		printf("January %i", y);
+		printDays(31);
+		break;
+	case 2:
+		printf("February %i", y);
+		//leap year crap
+		// 28 for reg, 29 for leap
+		if(leapYear())
+			printDays(29);
+		else
+			printDays(28);
+
+		break;
+	case 3:
+		printf("March %i", y);
+		printDays(31);
+		break;
+	case 4:
+		printf("April %i", y);
+		printDays(30);
+		break;
+	case 5:
+		printf("May %i", y);
+		printDays(31);
+		break;
+	case 6:
+		printf("June %i", y);
+		printDays(30);
+		break;
+	case 7:
+		printf("July %i", y);
+		printDays(31);
+		break;
+	case 8:
+		printf("August %i", y);
+		printDays(31);
+		break;
+	case 9:
+		printf("September %i", y);
+		printDays(30);
+		break;
+	case 10:
+		printf("October %i", y);
+		printDays(31);
+		break;
+	case 11:
+		printf("November %i", y);
+		printDays(30);
+		break;
+	case 12:
+		printf("December %i", y);
+		printDays(31);
+		break;
+	}
+	printf("\n\n");
+
+}
+
+
+void printDays(val) {
+	printf("Sun \t Mon \t Tue \t Wed \t Thu \t Fri \t Sat \n");
+	int space = 0;
+	for(int i = 0; i < start_day-1; i++) {
+		printf("\t");
+		space++;
+	}
+	for(int d = 1; d <= val; d++){
+		printf("%i \t", d);
+		space++;
+		if(space%7 == 0){
+			printf("\n");
+		}
+	}
+}
+
+void printCalender(year, day) {
+	//printf("%i -- %i", year, day);
+
+	for(int month = 1; month <= 12; month++) {
+		printMonth(year, month, getStartingDay(1, month, year));
+	}
+}
+
+
+int main (void) {
+	printf("Enter a year: ");
+	scanf("%i", &inputYear);
+
+	printCalender(inputYear, getStartingDay(1,1,inputYear));
+
+	return 0;
+}
+
+

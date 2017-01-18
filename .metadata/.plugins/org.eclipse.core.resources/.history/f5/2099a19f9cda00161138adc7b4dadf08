@@ -1,0 +1,91 @@
+/*
+ * PA1.c
+ *
+ *  Created on: Jan 14, 2017
+ *      Author: Mitch Gaines
+ */
+
+#include <stdio.h>
+
+int inputYear;
+
+
+int getStartingDay (d, m, y) {
+	if(m == 1){
+		m = 13;
+		y--;
+	}
+	else if(m == 2){
+		m = 14;
+		y--;
+	}
+
+	return (d + 2*m + 3*(m+1)/5 + y + y/4 - y/100 + y/400 + 2) % 7;
+}
+
+void printMonth(y, m, start_day) {
+	printMonthName();
+	printf("Sun \t Mon \t Tue \t Wed \t Thu \t Fri \t Sat \n");
+
+}
+
+void printMonthName (y, m) {
+	switch(m) {
+	case 1:
+		printf("January %i\n\n", y);
+		break;
+	case 2:
+		printf("February %i\n\n", y);
+		break;
+	case 3:
+		printf("March %i\n\n", y);
+		break;
+	case 4:
+		printf("April %i\n\n", y);
+		break;
+	case 5:
+		printf("May %i\n\n", y);
+		break;
+	case 6:
+		printf("June %i\n\n", y);
+		break;
+	case 7:
+		printf("July %i\n\n", y);
+		break;
+	case 8:
+		printf("August %i\n\n", y);
+		break;
+	case 9:
+		printf("September %i\n\n", y);
+		break;
+	case 10:
+		printf("October %i\n\n", y);
+		break;
+	case 11:
+		printf("November %i\n\n", y);
+		break;
+	case 12:
+		printf("December %i\n\n", y);
+		break;
+	}
+}
+
+void printCalender(year, day) {
+	//printf("%i -- %i", year, day);
+
+	for(int month = 1; month <= 12; month++) {
+		printMonth(year, month, getStartingDay(1, month, year));
+	}
+}
+
+
+int main (void) {
+	printf("Enter a year: ");
+	scanf("%i", &inputYear);
+
+	printCalender(inputYear, getStartingDay(1,1,inputYear));
+
+	return 0;
+}
+
+
