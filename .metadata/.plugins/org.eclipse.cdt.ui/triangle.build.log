@@ -1,0 +1,47 @@
+16:24:40 **** Incremental Build of configuration Debug for project triangle ****
+make all 
+Building file: ../triangle.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"triangle.d" -MT"triangle.o" -o "triangle.o" "../triangle.c"
+../triangle.c:7:8: error: ‘y1’ redeclared as different kind of symbol
+ double y1;
+        ^
+In file included from /usr/include/features.h:367:0,
+                 from /usr/include/stdio.h:27,
+                 from ../triangle.c:3:
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:251:1: note: previous declaration of ‘y1’ was here
+ __MATHCALL (y1,, (_Mdouble_));
+ ^
+../triangle.c: In function ‘main’:
+../triangle.c:28:8: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘double *’ [-Wformat=]
+  scanf("%d %d", &x1, &y1);
+        ^
+../triangle.c:28:8: warning: format ‘%d’ expects argument of type ‘int *’, but argument 3 has type ‘double *’ [-Wformat=]
+../triangle.c:30:8: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘double *’ [-Wformat=]
+  scanf("%d %d", &x2, &y2);
+        ^
+../triangle.c:30:8: warning: format ‘%d’ expects argument of type ‘int *’, but argument 3 has type ‘double *’ [-Wformat=]
+../triangle.c:32:8: warning: format ‘%d’ expects argument of type ‘int *’, but argument 2 has type ‘double *’ [-Wformat=]
+  scanf("%d %d", &x3, &y3);
+        ^
+../triangle.c:32:8: warning: format ‘%d’ expects argument of type ‘int *’, but argument 3 has type ‘double *’ [-Wformat=]
+../triangle.c:39:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]
+subdir.mk:18: recipe for target 'triangle.o' failed
+  printf("Length of AB %d \n", ab);
+         ^
+../triangle.c:40:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]
+  printf("Length of BC %d \n", bc);
+         ^
+../triangle.c:41:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]
+  printf("Length of CA %d \n", ca);
+         ^
+../triangle.c:42:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]
+  printf("Circumference is %d \n", circumference(ab, bc, ca));
+         ^
+../triangle.c:43:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]
+  printf("Area is %d \n", area(ab, bc, ca));
+         ^
+make: *** [triangle.o] Error 1
+
+16:24:40 Build Finished (took 310ms)
+
