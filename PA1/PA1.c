@@ -1,8 +1,8 @@
 /*
  * PA1.c
  *
- *  Created on: Jan 14, 2017
- *      Author: Mitch Gaines
+ * 	Created on: Jan 14, 2017
+ *      Author: Jonathan Gaines
  */
 
 #include <stdio.h>
@@ -36,18 +36,18 @@ int getStartingDay (int d, int m, int y) {
 }
 
 void printDays(int val, int start_day) {
-	printf("Sun \t Mon \t Tue \t Wed \t Thu \t Fri \t Sat \n");
+	printf("Sun  Mon  Tue  Wed  Thu  Fri  Sat \n");
 	int space = 0;
 	if(start_day == 0) {
 		start_day = 7;
 		space = 7;
 	}
 	for(int i = 0; i < start_day-1; i++) {
-		printf("\t");
+		printf("     ");
 		space++;
 	}
 	for(int d = 1; d <= val; d++){
-		printf("%4i \t", d);
+		printf("%3i  ", d);
 		space++;
 		if(space%7 == 0){ //if space reached is the 7th of the row, go to new line
 			printf("\n");
@@ -118,14 +118,15 @@ void printMonth(int y, int m, int start_day) {
 }
 
 void printCalender(int year, int day) {
+	printf("\n\n  ***\tCALENDAR FOR %i   ***", year);
+	// goes through every month of the year and calls printMonth(), passing the month variable into that function
 	for(int month = 1; month <= 12; month++) {
-		// cycles through months and prints them
 		printMonth(year, month, getStartingDay(1, month, year));
 	}
 }
 
 int main (void) {
-	printf("Monthly Calendar\nPlease enter year for this calendar: ");
+	printf("Enter year for it's calendar: ");
 	scanf("%i", &inputYear);
 
 	printCalender(inputYear, getStartingDay(1,1,inputYear));
