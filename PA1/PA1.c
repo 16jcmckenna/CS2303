@@ -42,10 +42,20 @@ void printDays(int val, int start_day) {
 		start_day = 7;
 		space = 7;
 	}
+
+	/* 1. Iterates until the value of the variable, i, is no longer more than one less than
+	the passed starting day. This is for the purpose of starting the first day of the 
+	month in the correct location under it's corresponding day of the week. Additionally,
+	the variable, space, increments by one each iteration. */
 	for(int i = 0; i < start_day-1; i++) {
 		printf("     ");
 		space++;
 	}
+
+	/* 2. Iterates until the variable, d, is equal to the variable, val, which is passed into
+	this function as the number of days in the month. This loop also increments the space
+	variable by one and if it's value is a multiple of 7 (meaning it is the last space of 
+	the line) it will create a new line. */
 	for(int d = 1; d <= val; d++){
 		printf("%3i  ", d);
 		space++;
@@ -119,7 +129,12 @@ void printMonth(int y, int m, int start_day) {
 
 void printCalender(int year, int day) {
 	printf("\n\n  ***\tCALENDAR FOR %i   ***", year);
-	// goes through every month of the year and calls printMonth(), passing the month variable into that function
+
+
+	/* 3. Cycles through every month of the year and calls printMonth(),
+	passing the month variable into that function. Each time the 
+	loop iterates, the month variable is increased by 1 until it is
+	equal to 12 (corresponding to the months of the year).*/
 	for(int month = 1; month <= 12; month++) {
 		printMonth(year, month, getStartingDay(1, month, year));
 	}
