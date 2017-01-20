@@ -19,8 +19,6 @@ This algorithm is capable of calculating the day of week for any given day, mont
 1. January 1st, 2010 --> day=1, month=13, year=2009
 2. Febuary 15th, 2020 --> day=15, month=14, year=2019
 With this in mind, the month of March is still month #3 and all the other months have their respective numerical values. 
-
-
 		
 Source of Algorithm:
 http://mathforum.org/library/drmath/view/55837.html
@@ -32,3 +30,5 @@ Loop Invariants:
 2) Iterates until the variable, d, is equal to the variable, val, which is passed into this function as the number of days in the month. This loop also increments the space variable by one and if it's value is a multiple of 7 (meaning it is the last space of the line) it will create a new line.
 
 3) Cycles through every month of the year and calls printMonth(), passing the month variable into that function. Each time the loop iterates, the month variable is increased by 1 until it is equal to 12 (corresponding to the months of the year).
+
+
