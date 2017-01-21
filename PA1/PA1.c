@@ -4,22 +4,18 @@
  * 	Created on: Jan 14, 2017
  *      Author: Jonathan Gaines
  */
-
 #include <stdio.h>
 
-int inputYear;
 
 int leapYear(int y) {
-
 	//determines if a year is a leap year
 	if((y % 4 == 0) && (y % 100 != 0 || y % 400 == 0)){
 		return 1;
 	}
 	return 0;
-}
+}//leapYear
 
 int getStartingDay (int d, int m, int y) {
-
 	//converts January and February to months of previous years as needed for algorithm
 	if(m == 1){
 		m = 13;
@@ -33,7 +29,7 @@ int getStartingDay (int d, int m, int y) {
 	//returns value between 0 and 6 corresponding to the day of the week
 	//0 = saturday .. 6 = friday
 	return (d + 2*m + 3*(m+1)/5 + y + y/4 - y/100 + y/400 + 2) % 7;
-}
+}//getStartingDay
 
 void printDays(int val, int start_day) {
 	printf("Sun  Mon  Tue  Wed  Thu  Fri  Sat \n");
@@ -64,7 +60,7 @@ void printDays(int val, int start_day) {
 		}
 	}
 	printf("\n");
-}
+}//printDays
 
 void printMonthName (int y, int m, int start_day) {
 	printf("\n\n");
@@ -120,12 +116,15 @@ void printMonthName (int y, int m, int start_day) {
 		printf("December %i\n\n", y);
 		printDays(31, start_day);
 		break;
+	default:
+		printf("Error: invalid month value");
+		break;
 	}
-}
+}//printMonthName
 
 void printMonth(int y, int m, int start_day) {
 	printMonthName(y, m, start_day);
-}
+}//printMonth
 
 void printCalender(int year, int day) {
 	printf("\n\n  ***\tCALENDAR FOR %i   ***", year);
@@ -138,15 +137,25 @@ void printCalender(int year, int day) {
 	for(int month = 1; month <= 12; month++) {
 		printMonth(year, month, getStartingDay(1, month, year));
 	}
-}
+}//printCalendar
 
 int main (void) {
+
+	int inputYear;
+
 	printf("Enter year for it's calendar: ");
 	scanf("%i", &inputYear);
+	
+	/* 4. Tests to see if the input year is a positive number, while it is not, it asks 
+	for a new year to be input. This loop keeps running until the year is positive. */
+	while(inputYear <= 0) {
+		printf("Error: You must enter a positive number for the year\nEnter Year: ");
+		scanf("%i", &inputYear);
+	}
 
 	printCalender(inputYear, getStartingDay(1,1,inputYear));
 
 	return 0;
-}
+}//main
 
 

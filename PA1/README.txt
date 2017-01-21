@@ -31,4 +31,9 @@ Loop Invariants:
 
 3) Cycles through every month of the year and calls printMonth(), passing the month variable into that function. Each time the loop iterates, the month variable is increased by 1 until it is equal to 12 (corresponding to the months of the year).
 
+4) Tests to see if the input year is a positive number, while it is not, it asks for a new year to be input. This loop keeps running until the year is positive.
+
+
+
+
 
