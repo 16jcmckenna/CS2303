@@ -133,7 +133,7 @@ void printCalender(int year, int day) {
 	/* 3. Cycles through every month of the year and calls printMonth(),
 	passing the month variable into that function. Each time the 
 	loop iterates, the month variable is increased by 1 until it is
-	equal to 12 (corresponding to the months of the year).*/
+	equal to 12 (corresponding to the months of the year). At this point, the 		loop stops running. */
 	for(int month = 1; month <= 12; month++) {
 		printMonth(year, month, getStartingDay(1, month, year));
 	}
@@ -146,7 +146,7 @@ int main (void) {
 	printf("Enter year for it's calendar: ");
 	scanf("%i", &inputYear);
 	
-	/* 4. Tests to see if the input year is a positive number, while it is not, it asks 
+	/* 4. Tests to see if the input year is a positive number before it executes, if it is not, it asks 
 	for a new year to be input. This loop keeps running until the year is positive. */
 	while(inputYear <= 0) {
 		printf("Error: You must enter a positive number for the year\nEnter Year: ");

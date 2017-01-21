@@ -29,9 +29,9 @@ Loop Invariants:
 
 2) Iterates until the variable, d, is equal to the variable, val, which is passed into this function as the number of days in the month. This loop also increments the space variable by one and if it's value is a multiple of 7 (meaning it is the last space of the line) it will create a new line.
 
-3) Cycles through every month of the year and calls printMonth(), passing the month variable into that function. Each time the loop iterates, the month variable is increased by 1 until it is equal to 12 (corresponding to the months of the year).
+3) Cycles through every month of the year and calls printMonth(), passing the month variable into that function. Each time the loop iterates, the month variable is increased by 1 until it is equal to 12 (corresponding to the months of the year). At this point, the loop stops running.
 
-4) Tests to see if the input year is a positive number, while it is not, it asks for a new year to be input. This loop keeps running until the year is positive.
+4) Tests to see if the input year is a positive number before it executes, if it is not, it asks for a new year to be input. This loop keeps running until the year is positive.
 
 
 
