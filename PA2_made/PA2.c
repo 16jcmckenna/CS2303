@@ -36,25 +36,36 @@ int main(int argc, char *argv[]) {
 		exit(EXIT_FAILURE);	
 	}
 
-
+// set init values of array to 'o'
 	for(int a = 0; a <= x; a++){
 		for(int b = 0; b <= y; b++){
 			grid[a][b] = (char) 111;		
 		}
 	}
 
+// get number of lines and character width in file
+	while((read = getline(&line, &len, input)) != -1) {
+		// set j = read if its the first pass through the while loop
+		j = !k ? read-1 : j; 		
+		k++;
+	}
+	rewind(input);
 
-	int x_assign, y_assign = 0;
+
+// overwrite previously set values with values from input file
+	int x_assign = 0, y_assign = 0, x_start = 0, y_start = 0;
+
+	y_start = (int) x/2 - j/2 + 1;
+	x_start = (int) y/2 - k/2 - 1;
+	y_assign = y_start;
 
 	while((read = getline(&line, &len, input)) != -1) {
-		j = !k ? read-1 : j; // set j = read if its the first pass through the while loop
-		
-		for(x_assign = 0; x_assign < j; x_assign++) {
-			grid[y_assign][x_assign] = line[x_assign];
+		for(x_assign = x_start; x_assign < j + x_start; x_assign++) {
+			grid[y_assign][x_assign] = line[x_assign-x_start];
 		}
-		k++;
-		y_assign = k;
+		y_assign++;
 	}
+	
 	
 	for(int a = 0; a < x; a++){
 		for(int b = 0; b < y; b++){
@@ -64,47 +75,6 @@ int main(int argc, char *argv[]) {
 	}
 	
 
-
-	
-
-
-
-
-
-
-/*									
-	int x_assign, y_assign = 0;
-	while(EOF != fgets(buff, 255, (FILE*)input) && y_assign < y){
-
-		// find sizeof line() and set j equal to that
-		// set y_assign equal to k
-		// center given values in grid[][]
-		
-		char *line;
-		line = malloc(sizeof(char) * x);
-		line = buff;	
-		
-		j = sizeof(line) / sizeof(line[0]); 
-
-		for(x_assign = 0; x_assign < x; x_assign++){
-			grid[x_assign][y_assign] = line[x_assign];
-		}
-		
-
-		for(int i = 0; i < j; i++){
-			printf("%c\n", line[i]);
-		}
-		y_assign++;
-	}
-
- PRINTS OUT VALUE OF GRID[][] 
-	for(int a = 0; a < j; a++){
-		for(int b = 0; b < y; b++){
-			printf("%c", (char) grid[b][a]);
-		}
-		printf("\n");
-	}
-*/
 
 
 	fclose(input);
