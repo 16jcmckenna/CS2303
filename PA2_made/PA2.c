@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 	}
 	x = atoi(argv[1]);
 	y = atoi(argv[2]);
-	char grid[x][y];
+	char *grid = malloc(y * sizeof(char));
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;
@@ -37,10 +37,19 @@ int main(int argc, char *argv[]) {
 	}
 
 // set init values of array to 'o'
-	for(int a = 0; a <= x; a++){
+//	for(int a = 0; a <= x; a++){
 		for(int b = 0; b <= y; b++){
-			grid[a][b] = (char) 111;		
+			char line_create[x];
+			for(int a = 0; a <= x; a++){
+				line_create[a] = (char) 111;
+			}
+			grid[b] = line_create;	
+			//printf("%s\n", line_create);
 		}
+//	}
+
+	for(int i = 0; i <= y; i++){
+		printf("%s\n", grid[i]);
 	}
 
 // get number of lines and character width in file
@@ -60,20 +69,22 @@ int main(int argc, char *argv[]) {
 	y_assign = y_start;
 
 	while((read = getline(&line, &len, input)) != -1) {
-		for(x_assign = x_start; x_assign < j + x_start; x_assign++) {
+		/*for(x_assign = x_start; x_assign < j + x_start; x_assign++) {
 			grid[y_assign][x_assign] = line[x_assign-x_start];
-		}
+		}*/
+
+		grid[y_assign] = line;
 		y_assign++;
 	}
 	
 	
-	for(int a = 0; a < x; a++){
+/*	for(int a = 0; a < x; a++){
 		for(int b = 0; b < y; b++){
 			printf(" %c", grid[a][b]);
 		}
 		printf("\n");
 	}
-	
+*/	
 
 
 
