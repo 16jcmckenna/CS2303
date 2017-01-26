@@ -1,16 +1,15 @@
 /*	Jonathan Gaines
 	PA2		*/
 
-
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "operations.h"
 
 FILE *input;
 int x, y, gens, init_x = 0, init_y = 0;
 char buff[255];
 int print, pause;
-int** grid; 
+extern int** grid; 
 
 
 void allocate_2d_mem(void){
@@ -52,7 +51,7 @@ void initialize_values(FILE *init_config){
 
 }//initialize_values
 
-void print_init(void){
+void print_grid(void){
 	for(int i = 0; i < y; i++){
 		for(int j = 0; j < x; j++)
 			printf("%c ", (char) grid[i][j]);
@@ -60,7 +59,7 @@ void print_init(void){
 		printf("\n");
 	}
 	
-}//print_init
+}//print_grid
 
 
 int main(int argc, char *argv[]) {
@@ -77,7 +76,7 @@ int main(int argc, char *argv[]) {
 	
 	allocate_2d_mem();
 	initialize_values(input);
-	print_init();
+	print_grid();
 	
 
 	fclose(input);
