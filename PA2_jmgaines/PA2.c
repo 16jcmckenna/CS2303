@@ -33,22 +33,27 @@ void initialize_values(FILE *init_config){
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;
-	int x_assign = 0, y_assign = 0, x_start = 0, y_start = 0;
-
+	int x_assign = 0, y_assign = 0;
+	int x_start = 0, y_start = 0;
+	int x_greatest = 0;
+	int line_lengths[y];
 
 	for(int i = 0; i < 2; i++) {
 		while((read = getline(&line, &len, init_config)) != -1){
 			if(!i) { // gets length and width of file matrix
-				init_x = !init_y ? read-1 : init_x; 
+				//init_x = !init_y ? read-1 : init_x;
+				line_lengths[init_y] = read-1;
+				x_greatest = x_greatest < read-1 ? read-1 : x_greatest;
+
 				init_y++;
 			} else { // assigns init values to center of grid array
-				for(x_assign = x_start; x_assign < init_x + x_start; x_assign++)
+				for(x_assign = x_start; x_assign < line_lengths[y_assign-y_start] + x_start; x_assign++)
 					grid[y_assign][x_assign] = line[x_assign-x_start];
 				y_assign++;	
 			}
 		}
 		rewind(init_config);//go back to beginning of file
-		x_start = (int) x/2 - init_x/2;
+		x_start = (int) x/2 - x_greatest/2;
 		y_start = (int) y/2 - init_y/2;
 		y_assign = y_start;
 	}
