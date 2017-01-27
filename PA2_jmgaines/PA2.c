@@ -9,13 +9,17 @@ FILE *input;
 int x, y, gens, init_x = 0, init_y = 0;
 char buff[255];
 int print, pause;
-extern int** grid; 
+int **grid, **variable_grid, **prev1, **prev2; 
 
 
-void allocate_2d_mem(void){
+int** allocate_2d_mem(void){
 	//allocates memory for the 2d array
-	grid = (int **)malloc(y*sizeof(int*));
-	for(int c = 0; c < y; c++) grid[c] = (int*)malloc(x*sizeof(int));
+
+	int i, **arr;
+	arr = malloc(y*sizeof(int*));
+	for(i = 0; i < y; i++) arr[i] = malloc(x*sizeof(int));
+
+	return arr;
 }//allocate_2d_mem
 
 void initialize_values(FILE *init_config){
@@ -72,8 +76,9 @@ int main(int argc, char *argv[]) {
 	
 	if(!input) exit(EXIT_FAILURE);
 
-	
-	
+	grid 	= allocate_2d_mem();		prev1 = allocate_2d_mem(); 
+	variable_grid = allocate_2d_mem();	prev2 = allocate_2d_mem();
+
 	allocate_2d_mem();
 	initialize_values(input);
 	print_grid();
