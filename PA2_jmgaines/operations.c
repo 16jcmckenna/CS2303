@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "operations.h"
 
-
-// if main grid = prev1 or prev2, stop
-// apply all changes between to variable_grid, then write varaible_grid to main grid
-
-
 /* END GAME FUNCTIONS **************************************************************/
+
 int compare_matrices(int **arr1, int **arr2){
-// check if two matrices hold the same value
+// check if two matrices hold the same values for every element
+
 	int val = 0;
 	
 	for (int i = 0; i < y; i++)
@@ -20,7 +18,11 @@ int compare_matrices(int **arr1, int **arr2){
 	return val;
 }//compare_matrices
 
+
+
 int stuck_pat(int **cur_arr, int **prev1_arr){
+// checks if pattern is stuck by comparing prev1 and current matrices
+
 	if(compare_matrices(cur_arr, prev1_arr))
 		return 1;
 	else
@@ -28,7 +30,11 @@ int stuck_pat(int **cur_arr, int **prev1_arr){
 }//stuck_pat
 
 
+
+
 int repeating_pat(int **cur_arr, int **prev2_arr){
+// checks for a repeating pattern by comparing prev2 and current matrices
+
 	if(compare_matrices(cur_arr, prev2_arr))
 		return 1;
 	else
@@ -36,36 +42,50 @@ int repeating_pat(int **cur_arr, int **prev2_arr){
 }//repeating_pat
 
 
+
+
 int all_dead(int **arr){
-// check if all grid values are int values 111
+// check if all grid values are int values 46
+
 	int val = 0;
 
   for (int i = 0; i < y; i++)
     for (int j = 0; j < x; j++)
-			if(arr[i][j] == 111) val++;
+			if(arr[i][j] == 46) val++;
 		
 	val = (val == x*y) ? 1 : 0;
 	return val;
 }//all_dead
 
+
+
 int is_complete(int **arr){
 // check if the program should stop producing generations
+
 	if(all_dead(arr))
 		return 1;
 	else if (stuck_pat(arr, prev1) && cur_gen > 0)
-		return 1;
+		return 2;
 	else if (repeating_pat(arr, prev2) && cur_gen > 1)
-		return 1;
+		return 3;
 	else if(cur_gen == gens)
-		return 1;
+		return 4;
 	else
 		return 0;
 }//is_complete
 
+
 /* END END GAME FUNCTIONS************************************************************/
+
+
+
+
 /* NEW GEN FUNCTIONS ****************************************************************/
 
+
 void write_ops(int **cur_grid, int **var_grid){
+//pulls neighbor values for every value in matrix and then births or kills organisms
+
 	for (int i = 0; i < y; i++)
   	for (int j = 0; j < x; j++){
 			int num_neighbors = 0;
@@ -174,19 +194,22 @@ void write_ops(int **cur_grid, int **var_grid){
 
 	for (int i = 0; i < y; i++)
   	for (int j = 0; j < x; j++){
-			if(var_grid[i][j] == 3 && cur_grid[i][j] == 111)
+			if(var_grid[i][j] == 3 && cur_grid[i][j] == 46)
 				var_grid[i][j] = 120;
 			else if((var_grid[i][j] == 2 || var_grid[i][j] == 3) && cur_grid[i][j] == 120)
 				var_grid[i][j] = 120;
 			else if((var_grid[i][j] < 2 || var_grid[i][j] > 3) && cur_grid[i][j] == 120)
-				var_grid[i][j] = 111;
+				var_grid[i][j] = 46;
 			else 
 				var_grid[i][j] = cur_grid[i][j];
 		} 
 
 }//write_ops
 
+
 void write_new(int **cur_grid, int **var_grid, int **prev1_l, int **prev2_l){
+//handles matrix operations to create new matrix for new generation
+
 	write_ops(cur_grid, var_grid);
 	
 	//set grid equal to the variable grid
@@ -198,9 +221,13 @@ void write_new(int **cur_grid, int **var_grid, int **prev1_l, int **prev2_l){
 		}
 }//write_new
 
+
 /* END NEW GEN FUNCTIONS ************************************************************/
 
+
 void print_gen(int **arr){
+//prints the current generation
+
 	printf("\nGeneration %d\n\n", cur_gen);
 	
 	for(int i = 0; i < y; i++){
@@ -213,13 +240,40 @@ void print_gen(int **arr){
 
 
 void apply_ops(void){
-// handle all matrix operations
+// handles all matrix operations
+	char ch;
+	
 	while(!is_complete(grid)){
-			print_gen(grid);
-			write_new(grid, variable_grid, prev1, prev2);		
+			if(print){
+				print_gen(grid);
+				usleep(75*1000);
+			}
+			if(pause1){
+				printf("Press ENTER/RETURN to go to next generation\n");
+				scanf("%c", &ch);
+				write_new(grid, variable_grid, prev1, prev2);		
+			} else {
+				write_new(grid, variable_grid, prev1, prev2);		
+			}
+		
 			cur_gen++;
 	}
+	
+	printf("\n%d generations played\n", cur_gen);
+	if(is_complete(grid) == 1)
+		printf("Termination condition: All organisms dead\n");
+	else if(is_complete(grid) == 2)
+		printf("Termination condition: Steady state reached\n");
+	else if(is_complete(grid) == 3)
+		printf("Termination condition: Oscillating reached\n");
+	else if(is_complete(grid) == 4)
+		printf("Termination condition: Desired generation reached\n");
 
-	printf("%d generations printed\n", cur_gen);
+
+
+
+
+
+
 }//apply_ops
 

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "operations.h"
 
 FILE * input;
@@ -17,7 +18,7 @@ int** allocate_2d_mem(FILE *init_config) {
 
     for (int i = 0; i < y; i++)
       for (int j = 0; j < x; j++)
-        arr[i][j] = (int) 111;
+        arr[i][j] = (int) 46;
 
     char * line = NULL;
     size_t len = 0;
@@ -46,21 +47,14 @@ int** allocate_2d_mem(FILE *init_config) {
       y_start = (int) y / 2 - init_y / 2;
       y_assign = y_start;
     }
+		
+		//reassign o's to .'s
+		for (int i = 0; i < y; i++)
+     for (int j = 0; j < x; j++)
+       if(arr[i][j] == 111) arr[i][j] = 46;
 
     return arr;
 } //allocate_2d_mem
-
-
-/*
-void print_grid(void) {
-    for (int i = 0; i < y; i++) {
-      for (int j = 0; j < x; j++)
-        printf("%c ", (char) prev1[i][j]);
-
-      printf("\n");
-    }
-} //print_grid
-*/
 
 
 int main(int argc, char *argv[]) {
@@ -71,7 +65,21 @@ int main(int argc, char *argv[]) {
     gens = atoi(argv[3]);		input = fopen(argv[4], "r");
 
     if (!input) exit(EXIT_FAILURE);
-		
+	
+
+		if (argc < 6){
+			print = 0;
+			pause1 = 0;
+		}
+		else if (argc < 7){
+			print = strcmp(argv[5], "y") ? 0 : 1;
+			pause1 = 0;
+		}
+		else {
+			print = strcmp(argv[5], "y") ? 0 : 1;
+			pause1 = strcmp(argv[6], "y") ? 0 : 1;
+		}
+
 		cur_gen = 0;
     grid = allocate_2d_mem(input);						prev1 = allocate_2d_mem(input);
 		variable_grid = allocate_2d_mem(input);		prev2 = allocate_2d_mem(input);

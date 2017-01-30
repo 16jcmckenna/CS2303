@@ -1,7 +1,7 @@
 #ifndef OPERATIONS_H_INCLUDED
 #define OPERATIONS_H_INCLUDED
 
-int print, pause, gens, x, y;
+int print, pause1, gens, x, y;
 int **grid, **variable_grid, **prev1, **prev2; 
 int cur_gen;
 
