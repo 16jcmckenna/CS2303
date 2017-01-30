@@ -35,6 +35,11 @@ int** allocate_2d_mem(FILE *init_config) {
           line_lengths[init_y] = read - 1;
           x_greatest = x_greatest < read - 1 ? read - 1 : x_greatest;
 
+					if(line_lengths[init_y] > x){
+						printf("ERROR: x value less than what is stored in input file\n");
+						exit(EXIT_FAILURE);
+					}
+
           init_y++;
         } else { // assigns init values to center of grid array
           for (x_assign = x_start; x_assign < line_lengths[y_assign - y_start] + x_start; x_assign++)
@@ -58,14 +63,21 @@ int** allocate_2d_mem(FILE *init_config) {
 
 
 int main(int argc, char *argv[]) {
+		
+		// if there's not enough args, throw error
+    if (argc < 5){
+			printf("ERROR: Not enough arguments\n"); 
+			exit(EXIT_FAILURE);
+    }
 
-    if (argc < 5) exit(EXIT_FAILURE); // if there's not enough args, throw error
-
-    x = atoi(argv[1]);			y = atoi(argv[2]);
+		x = atoi(argv[1]);			y = atoi(argv[2]);
     gens = atoi(argv[3]);		input = fopen(argv[4], "r");
 
-    if (!input) exit(EXIT_FAILURE);
-	
+		// if input file does not exist, throw error
+    if (!input){
+			printf("ERROR: Input file does not exist\n"); 
+			exit(EXIT_FAILURE);	
+		}
 
 		if (argc < 6){
 			print = 0;
