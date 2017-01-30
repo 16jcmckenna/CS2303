@@ -19,4 +19,8 @@ void print_gen(int **arr);
 
 void apply_ops(void);
 
+void write_ops(int **cur_grid, int **var_grid);
+
+void write_new(int **cur_grid, int **var_grid, int **prev1_l, int **prev2_l);
+
 #endif
