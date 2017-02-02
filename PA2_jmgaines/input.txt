@@ -1,4 +1,4 @@
-oooo
-oxxo
-oxxo
-oooo
+xoxo
+oxo
+oxxx
+ooxx
