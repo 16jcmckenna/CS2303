@@ -39,12 +39,10 @@ void addBranch(TreeNodePtr *treePtr, char word[256]){
 		temp = (TreeNode *)malloc(sizeof(TreeNode));	
 		temp->left = NULL;
 		temp->right = NULL;
+		temp->count = 0;
 		strcpy(temp->word, word);
 		*treePtr = temp;
 		unique_wc++;
-		if(unique_wc == 2){
-			(*treePtr)->count-=4672;
-		}
 	} 
 	else if(strcmp(word, (*treePtr)->word) < 0){
 		addBranch(&((*treePtr)->left), word);
@@ -86,7 +84,7 @@ int main(int argc, char *argv[]){
 	
 	fclose(output);
 	fclose(tmp);
-//	remove("tmp.txt");
+	remove("tmp.txt");
 	return 0;
 }//main
 
