@@ -1,0 +1,42 @@
+TEST 1:
+
+	Input: 
+		./PA3 output.txt inputs/executive-order.txt
+
+	Output:
+		 57 - a
+      2 - ability
+      1 - act
+      1 - activity
+
+			... other words here ...
+
+			1 - would-be
+			3 - year
+		----------
+		2809 words
+		634 unique words
+
+
+TEST 2:
+
+	Input: 
+		./PA3 output.txt inputs/press-briefing.txt
+
+	Output:
+		 110 - a
+  	   1 - abc
+       1 - abdullah
+       2 - abe
+
+			... other words here ...
+
+		   2 - you're
+		   1 - you've
+		   4 - your
+		   1 - zones
+		 ----------
+		 5868 words
+		 1360 unique words
+
+

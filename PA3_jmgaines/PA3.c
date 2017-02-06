@@ -17,6 +17,10 @@ int main(int argc, char *argv[]){
 	for(int i = 2; i < argc; i++){
 		FILE *input;
 		input	= fopen(argv[i], "r");
+		if(!input){
+			printf("Input file not found\n");
+			exit(EXIT_FAILURE);
+		}
 		printInit(input);
 		fclose(input);
 	}	
