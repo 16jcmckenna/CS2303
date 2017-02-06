@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
 	}	
 
 	tmp2out();
-
+	
 	return 0;
 }//main
 

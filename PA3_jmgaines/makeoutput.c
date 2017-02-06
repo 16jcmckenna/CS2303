@@ -11,6 +11,7 @@ void printAlphabetical(TreeNodePtr treePtr){
 		fprintf(output, "%4d - %s\n", treePtr->count + 1, treePtr->word);
 		printAlphabetical(treePtr->right);
 	}
+	free(malloc(sizeof(TreeNode)));
 }//printAlphabetical
 
 void addBranch(TreeNodePtr *treePtr, char word[256]){

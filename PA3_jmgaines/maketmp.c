@@ -13,7 +13,7 @@ void printInit(FILE *f){
 	
 		removePunc(word);
 
-		if(word[0] != 45)
+		if(word[0] != 45 && word[0] != 39)
 			fprintf(tmp, "%s \n", word);
 
 	}
@@ -32,10 +32,10 @@ void tmp2out(void){
 
 void removePunc(char arr[256]){
 	int cur_pos= 0;
-	for(char *c = word; *c; c++){
-		int n = *c;
-		if((isalpha(*c)) || n == 39 || n == 45){
-			arr[cur_pos++] = *c;
+	for(char *i = arr; *i; i++){
+		int n = *i;
+		if((isalpha(n)) || n == 39 || n == 45){
+			arr[cur_pos++] = *i;
 		}
 	}
 	arr[cur_pos] = '\0';
