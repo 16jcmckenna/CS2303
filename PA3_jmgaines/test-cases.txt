@@ -1,4 +1,4 @@
-TEST 1:
+TEST 1: https://www.whitehouse.gov/the-press-office/2017/01/27/executive-order-protecting-nation-foreign-terrorist-entry-united-states
 
 	Input: 
 		./PA3 output.txt inputs/executive-order.txt
@@ -18,7 +18,7 @@ TEST 1:
 		634 unique words
 
 
-TEST 2:
+TEST 2: https://www.whitehouse.gov/the-press-office/2017/02/03/press-briefing-press-secretary-sean-spicer-232017-8
 
 	Input: 
 		./PA3 output.txt inputs/press-briefing.txt

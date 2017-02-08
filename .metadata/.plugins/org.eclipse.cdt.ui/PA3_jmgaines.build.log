@@ -1,0 +1,15 @@
+14:04:59 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+gcc -Wall -c -g PA3.c
+In file included from PA3.c:6:0:
+makeoutput.h:4:24: error: unknown type name ‘TreeNodePtr’
+ void printAlphabetical(TreeNodePtr treePtr);
+                        ^
+makeoutput.h:6:16: error: unknown type name ‘TreeNodePtr’
+ void addBranch(TreeNodePtr *treePtr, char word[256]);
+                ^
+make: *** [PA3.o] Error 1
+makefile:8: recipe for target 'PA3.o' failed
+
+14:04:59 Build Finished (took 190ms)
+

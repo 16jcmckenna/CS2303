@@ -13,3 +13,51 @@ make: Nothing to be done for 'all'.
 14:00:48 **** Incremental Build of configuration Default for project LA3_jmgaines ****
 make all 
 make: Nothing to be done for 'all'.
+15:16:06 **** Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:16:41 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:17:22 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:17:37 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:17:46 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:36:12 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:36:17 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:36:17 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+15:38:23 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+make: Nothing to be done for 'all'.
+14:03:54 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+gcc -Wall -o word-count PA3.o
+PA3.o: In function `main':
+/home/shawn/Desktop/CS2303/PA3_jmgaines/PA3.c:19: undefined reference to `printInit'
+makefile:5: recipe for target 'word-count' failed
+/home/shawn/Desktop/CS2303/PA3_jmgaines/PA3.c:23: undefined reference to `tmp2out'
+collect2: error: ld returned 1 exit status
+make: *** [word-count] Error 1
+14:04:59 **** Incremental Build of configuration Default for project PA3_jmgaines ****
+make all 
+gcc -Wall -c -g PA3.c
+In file included from PA3.c:6:0:
+makeoutput.h:4:24: error: unknown type name ‘TreeNodePtr’
+ void printAlphabetical(TreeNodePtr treePtr);
+                        ^
+makeoutput.h:6:16: error: unknown type name ‘TreeNodePtr’
+ void addBranch(TreeNodePtr *treePtr, char word[256]);
+                ^
+make: *** [PA3.o] Error 1
+makefile:8: recipe for target 'PA3.o' failed
