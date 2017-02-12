@@ -1,0 +1,25 @@
+//============================================================================
+// Name        : PA4_retry.cpp
+// Author      : Jonathan Gaines
+//============================================================================
+
+#include <iostream>
+#include <cstdlib>
+#include "Event.h"
+#include "Customer.h"
+#include "Teller.h"
+
+using namespace std;
+
+int main(int argc, char *argv[]) {
+
+	/*if(argc < 6) {
+		cout << "You are missing one or more arguments" << endl;
+		exit(EXIT_FAILURE);
+	}*/
+	num_customers = argv[1];
+
+	cout << num_customers;
+
+	return 0;
+}

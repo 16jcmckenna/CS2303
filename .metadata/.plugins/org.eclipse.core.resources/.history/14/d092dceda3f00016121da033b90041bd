@@ -1,0 +1,26 @@
+/*
+ * Event.h
+ *
+ *  Created on: Feb 11, 2017
+ *      Author: shawn
+ */
+
+#ifndef EVENT_H_
+#define EVENT_H_
+
+namespace std {
+
+class Event {
+public:
+	int num_customers;
+	int num_tellers;
+	int sim_time;
+	float avg_serv_time;
+
+	Event();
+	virtual ~Event();
+};
+
+} /* namespace std */
+
+#endif /* EVENT_H_ */

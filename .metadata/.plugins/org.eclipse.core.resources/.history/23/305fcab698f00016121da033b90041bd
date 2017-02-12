@@ -1,0 +1,21 @@
+/*
+ * Event.cpp
+ *
+ *  Created on: Feb 11, 2017
+ *      Author: shawn
+ */
+
+#include "Event.h"
+
+namespace std {
+
+Event::Event() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Event::~Event() {
+	// TODO Auto-generated destructor stub
+}
+
+} /* namespace std */
