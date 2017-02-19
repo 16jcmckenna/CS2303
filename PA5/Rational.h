@@ -7,11 +7,10 @@ class Rational {
 		Rational(int num, int denom);
 		Rational(int wholeNumber);
 		Rational(const Rational &a);
-
-		Rational operator+(const Rational& num1);
-
+		friend Rational operator+(const Rational& num1);
+	
 	private:
-				
+		int num, denom;
 };
 
 
